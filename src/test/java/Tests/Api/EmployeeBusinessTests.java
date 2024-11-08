@@ -9,6 +9,7 @@ import io.restassured.RestAssured;
 import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -50,7 +51,7 @@ public class EmployeeBusinessTests {
 
 
     @Test
-    @Description("Проверка, что могу получить информацию о пользователе")
+    @DisplayName("Проверка, что могу получить информацию о сотруднике")
     public void ICanGetEmployeeInfo() throws IOException {
         Employee employee = employeeHelper.getEmployeeInfo(employeeId);
         assertEquals(employee.id(), employeeId);

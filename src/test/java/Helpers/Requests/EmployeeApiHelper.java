@@ -2,6 +2,7 @@ package Helpers.Requests;
 
 import Config.ConfigLoader;
 import Model.*;
+import io.qameta.allure.Step;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.http.ContentType;
 
@@ -34,7 +35,8 @@ public class EmployeeApiHelper {
                 .post().body().as(CreateEmployeeResponse.class);
     }
 
-    public Employee getEmployeeInfo(int employeeId) throws IOException {
+    @Step("Получение информации о сотруднике")
+    public Employee getEmployeeInfo(int employeeId)  {
 
         AuthResponse info = auth(ConfigLoader.getApiUsername(), ConfigLoader.getApiUserPassword());
 

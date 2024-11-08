@@ -2,6 +2,7 @@ package Helpers.Db;
 
 import Config.ConfigLoader;
 import Data.DbSqlRequests;
+import io.qameta.allure.Step;
 
 import java.io.IOException;
 import java.sql.*;
@@ -16,6 +17,7 @@ public class DatabaseService {
                 ConfigLoader.getDbPassword());
     }
 
+    @Step("Получение Id компании")
     public int getAnyCompanyID() throws SQLException {
 
         String sqlQuery = DbSqlRequests.SQL_GET_ANY_COMPANY_ID;

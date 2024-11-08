@@ -2,9 +2,9 @@ package Tests.Api;
 
 import Config.ConfigLoader;
 import io.restassured.RestAssured;
-import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import Helpers.Db.DatabaseService;
 import Helpers.Requests.CompanyApiHelper;
@@ -44,7 +44,7 @@ public class EmployeeContractTests {
     }
 
     @Test
-    @Description("Получает список работников по существующему id компании")
+    @DisplayName("Получает список работников по существующему id компании")
     public void status200OnGetEmployeesByCompany() throws SQLException {
         int id = databaseService.getAnyCompanyID();
 
