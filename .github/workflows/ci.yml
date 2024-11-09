@@ -32,9 +32,11 @@ jobs:
           sudo apt-get install -y google-chrome-stable
 
       - name: Run tests
-        run: |
-          mvn -Dtest=EmployeeBusinessTests test
-          mvn -Dtest=EmployeeContractTests test
+        run: mvn clean test
+
+
+        #  mvn -Dtest=EmployeeBusinessTests test
+         # mvn -Dtest=EmployeeContractTests test
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     # - name: Update dependency graph

@@ -27,7 +27,7 @@ public class AuthTests {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless"); // Запуск в headless режиме
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
         driver.get(ConfigLoader.getUiUrl());
         loginPage = new LoginPage(driver);
     }
