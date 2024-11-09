@@ -12,6 +12,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,6 +25,8 @@ public class AuthTests {
     @BeforeEach
     public void setUp() throws IOException {
         WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless"); // Запуск в headless режиме
         driver = new ChromeDriver();
         driver.get(ConfigLoader.getUiUrl());
         loginPage = new LoginPage(driver);
