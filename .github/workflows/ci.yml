@@ -20,6 +20,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '17'
+          distribution: 'temurin'
 
       # Шаг 3: Кэшируем зависимости Maven для ускорения следующих запусков
       - name: Cache Maven dependencies
