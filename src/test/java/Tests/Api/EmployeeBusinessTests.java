@@ -6,7 +6,6 @@ import Helpers.Requests.CompanyApiHelper;
 import Helpers.Requests.EmployeeApiHelper;
 import Model.Employee;
 import io.restassured.RestAssured;
-import jdk.jfr.Description;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
