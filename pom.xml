@@ -106,7 +106,11 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
                 </configuration>
+
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
@@ -134,18 +138,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-
-            <!-- JUnit5 плагин -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
-                    </systemPropertyVariables>
-                </configuration>
             </plugin>
 
         </plugins>
