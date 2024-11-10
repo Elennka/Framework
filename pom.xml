@@ -110,7 +110,7 @@
                         <!-- Указываем директорию для результатов Allure -->
                         <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
                         <!-- Путь для генерации отчета Allure -->
-                        <reportDirectory>${project.build.directory}/site/allure-maven</reportDirectory>
+                        <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
                     </systemPropertyVariables>
                 </configuration>
 
