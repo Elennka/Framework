@@ -31,25 +31,29 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      - name: Run tests with Allure
-        run: |
-          mvn clean test
-          mvn allure:report
+      - name: Install dependencies
+        run: mvn clean install
+
+      - name: Create allure-results directory
+        run: mkdir -p ./allure-results
+
+      - name: Run tests and collect Allure results
+        run: mvn clean test -Dallure.results.directory=./allure-results
 
       - name: List Allure results directory
         run: |
           ls -R ./allure-results
 
-      - name: Upload Allure results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results
-          path: target/allure-results
+      - name: Generate Allure report
+        run: mvn allure:report
+
+      - name: List Allure report directory
+        run: |
+          ls -R ./target/site/allure-maven
 
       - name: Deploy Allure Report to GitHub Pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ls -R ./target/site/allure-maven
+          publish_dir: ./target/site/allure-maven
           publish_branch: gh-pages
