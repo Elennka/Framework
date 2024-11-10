@@ -36,26 +36,26 @@ jobs:
 
       - name: Create allure-results directory
         run: |
-          mkdir -p ./allure-results
-          mkdir -p ./allure-report
+          mkdir -p .target/allure-results
+          mkdir -p .target/allure-report
 
       - name: Run tests and collect Allure results
-        run: mvn clean test -Dallure.results.directory=./allure-results
+        run: mvn clean test -Dallure.results.directory=.target/allure-results
 
       - name: List Allure results directory
         run: |
-          ls -R ./allure-results
+          ls -R .target/allure-results
 
       - name: Generate Allure report
-        run: mvn allure:report
+        run: mvn allure:report .target/allure-report
 
       - name: List Allure report directory
         run: |
-          ls -R ./allure-report
+          ls -R .target/allure-report
 
       - name: Deploy Allure Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
+          publish_dir: .target/allure-report
           publish_branch: gh-pages
