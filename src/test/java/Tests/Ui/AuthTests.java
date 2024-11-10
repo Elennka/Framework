@@ -23,7 +23,7 @@ public class AuthTests {
     private LoginPage loginPage;
 
     @BeforeEach
-    public void setUp() throws IOException {
+    public void setUp() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--headless"); // Запуск в headless режиме

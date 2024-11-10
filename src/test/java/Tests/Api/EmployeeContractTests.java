@@ -22,12 +22,10 @@ public class EmployeeContractTests {
     static int companyId;
     static int employeeId;
 
-
     @BeforeAll
     public static void setUp() throws SQLException, IOException {
         RestAssured.baseURI = ConfigLoader.getApiUrl();
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-
         databaseService = new DatabaseService();
         databaseService.connectToDb();
         companyId = databaseService.createNewCompany();
@@ -39,7 +37,7 @@ public class EmployeeContractTests {
 
     @AfterAll
     public static void tearDown() throws SQLException {
-        databaseService.deleteCompanyAndItsEmloyees(companyId);
+        databaseService.deleteCompanyAndItsEmloyees();
         databaseService.closeConnection();
     }
 
@@ -47,7 +45,6 @@ public class EmployeeContractTests {
     @DisplayName("Получает список работников по существующему id компании")
     public void status200OnGetEmployeesByCompany() throws SQLException {
         int id = databaseService.getAnyCompanyID();
-
         given()
                 .basePath("employee")
                 .queryParam("company", id)

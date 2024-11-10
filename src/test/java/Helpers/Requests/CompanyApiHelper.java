@@ -26,7 +26,6 @@ public class CompanyApiHelper {
     public CreateCompanyResponse createCompany() {
         Faker faker=new Faker();
         AuthResponse info = auth(ConfigLoader.getApiUsername(), ConfigLoader.getApiUserPassword());
-
         CreateCompanyRequest createCompanyRequest = new CreateCompanyRequest(faker.company().name(), faker.lorem().sentence());
 
         return given()

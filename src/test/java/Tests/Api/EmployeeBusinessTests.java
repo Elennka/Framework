@@ -12,8 +12,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.sql.SQLException;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,10 +22,8 @@ public class EmployeeBusinessTests {
     static int companyId;
     static int employeeId;
 
-
     @BeforeAll
     public static void setUp() throws SQLException, IOException {
-
         RestAssured.baseURI = ConfigLoader.getApiUrl();
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
         databaseService = new DatabaseService();
@@ -35,7 +31,6 @@ public class EmployeeBusinessTests {
         companyId = databaseService.createNewCompany();
         employeeId = databaseService.createNewEmployee(companyId);
         databaseService.createNewEmployee(companyId);
-
         companyHelper = new CompanyApiHelper();
         employeeHelper = new EmployeeApiHelper();
 
@@ -44,10 +39,9 @@ public class EmployeeBusinessTests {
 
     @AfterAll
     public static void tearDown() throws SQLException {
-        databaseService.deleteCompanyAndItsEmloyees(companyId);
+        databaseService.deleteCompanyAndItsEmloyees();
         databaseService.closeConnection();
     }
-
 
     @Test
     @DisplayName("Проверка, что могу получить информацию о сотруднике")
