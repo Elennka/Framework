@@ -36,6 +36,10 @@ jobs:
           mvn clean test
           mvn allure:report
 
+      - name: List files in Allure results directory
+        run: |
+          ls -R ./target/site/allure-maven
+
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
         with:
