@@ -52,7 +52,7 @@ jobs:
 
       # Проверяем, что отчет сгенерирован
       - name: List Allure report directory
-        run: ls -R ./target/allure-report
+        run: ls -R ./target/site/allure-maven-plugin
 
       # Публикуем отчет на GitHub Pages
       - name: Deploy Allure Report to GitHub Pages
