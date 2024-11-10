@@ -34,28 +34,30 @@ jobs:
       - name: Install dependencies
         run: mvn clean install
 
+      # Создаем директорию для результатов Allure
       - name: Create allure-results directory
-        run: |
-          mkdir -p .target/allure-results
-          mkdir -p .target/allure-report
+        run: mkdir -p ./target/allure-results
 
+      # Запускаем тесты с сохранением результатов в target/allure-results
       - name: Run tests and collect Allure results
-        run: mvn clean test -Dallure.results.directory=.target/allure-results
+        run: mvn clean test -Dallure.results.directory=./target/allure-results
 
-      - name: List Allure results directory
-        run: |
-          ls -R .target/allure-results
+      # Проверяем, что результаты тестов появились в директории
+      - name: List allure-results directory
+        run: ls -R ./target/allure-results
 
+      # Генерируем Allure отчет
       - name: Generate Allure report
-        run: mvn allure:report .target/allure-report
+        run: mvn allure:report
 
+      # Проверяем, что отчет сгенерирован
       - name: List Allure report directory
-        run: |
-          ls -R .target/allure-report
+        run: ls -R ./target/site/allure-maven
 
+      # Публикуем отчет на GitHub Pages
       - name: Deploy Allure Report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .target/allure-report
+          publish_dir: ./target/site/allure-maven
           publish_branch: gh-pages
