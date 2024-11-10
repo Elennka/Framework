@@ -35,7 +35,9 @@ jobs:
         run: mvn clean install
 
       - name: Create allure-results directory
-        run: mkdir -p ./allure-results
+        run: |
+          mkdir -p ./allure-results
+          mkdir -p ./allure-report
 
       - name: Run tests and collect Allure results
         run: mvn clean test -Dallure.results.directory=./allure-results
