@@ -41,7 +41,7 @@ jobs:
         run: |
             mkdir -p allure-report
             allure generate --clean target/allure-results -o allure-report
-          continue-on-error: true
+        continue-on-error: true
 
       - name: List Allure Report Files Before Upload
         run: ls -R allure-report
