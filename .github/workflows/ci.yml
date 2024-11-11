@@ -46,23 +46,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      - name: Install ChromeDriver
-        run: |
-          mkdir -p $HOME/chromedriver  
-          CHROME_DRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE)
-          wget -N https://chromedriver.storage.googleapis.com/$CHROME_DRIVER_VERSION/chromedriver_linux64.zip
-          unzip chromedriver_linux64.zip -d $HOME/chromedriver/
-          sudo chmod +x $HOME/chromedriver/chromedriver  
-          echo "PATH=$PATH:$HOME/chromedriver" >> $GITHUB_ENV  
-
 
       - name: Run Tests
         run: |
-          mvn -Dmaven.test.failure.ignore=true \
-              -Dselenide.browser=chrome \
-              -Dselenide.headless=true \
-              -Dchromeoptions.args="--no-sandbox --disable-dev-shm-usage --disable-gpu --remote-allow-origins=*" \
-              test
+          mvn clean test
 
 
       - name: Generate Allure Report
