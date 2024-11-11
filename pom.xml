@@ -106,14 +106,7 @@
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <systemPropertyVariables>
-                        <!-- Указываем директорию для результатов Allure -->
-                        <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
-                        <!-- Путь для генерации отчета Allure -->
-                        <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
-                    </systemPropertyVariables>
                 </configuration>
-
                 <dependencies>
                     <dependency>
                         <groupId>org.aspectj</groupId>
