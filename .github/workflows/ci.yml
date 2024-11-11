@@ -51,6 +51,8 @@ jobs:
         run: |
           mvn clean test
 
+      - name: List Allure Results Files Before Upload
+        run: ls -R allure-results
 
       - name: Generate Allure Report
         run: |
