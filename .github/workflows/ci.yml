@@ -56,8 +56,7 @@ jobs:
 
       - name: Generate Allure Report
         run: |
-          mkdir -p allure-report
-          allure generate --clean allure-results -o allure-report
+           allure generate --clean allure-results -o allure-report
         continue-on-error: true
 
       - name: List Allure Report Files Before Upload
