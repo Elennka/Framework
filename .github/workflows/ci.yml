@@ -40,7 +40,6 @@ jobs:
           unzip allure.zip -d /opt/allure
           sudo ln -s /opt/allure/allure-2.25.0/bin/allure /usr/bin/allure
 
-
       - name: Install Chrome
         run: |
           sudo apt-get update
